@@ -13,7 +13,7 @@
         $sql = "SELECT * FROM songs";
     }
     else{
-        $sql = "SELECT * FROM sets WHERE SetID = " . $gameSet;
+        $sql = "SELECT * FROM songs WHERE SetID = " . $gameSet;
     }
 
     

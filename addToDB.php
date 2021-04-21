@@ -35,36 +35,42 @@
 ?>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<main class="px-3">
-    <h1>Add video to game set:</h1>
-    <form action="addToDB.php" method="post">
-        <label for="setId">Set</label>
-        <select id="setId" name="set" class="form-control">
-            <?php
-            $sql = "SELECT * FROM sets ORDER BY SetID";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                echo '<option value="'.$row["SetID"].'">'.$row["SetDescription"].'</option>';
-                }
-            } else {
-                //Fallback, if database throughts an error
-                echo '<option value="0">Random songs from all categories</option>';
-            }
-            $conn->close();
-            ?>
-        </select>
+<link href="css\cover.css" rel="stylesheet">
 
-        <br>
+<html>
+    <body class="d-flex h-100 text-center text-white bg-dark">
+        <main class="px-3">
+            <h1>Add video to game set:</h1>
+            <form action="addToDB.php" method="post">
+                <label for="setId">Set</label>
+                <select id="setId" name="set" class="form-control">
+                    <?php
+                    $sql = "SELECT * FROM sets ORDER BY SetID";
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                        echo '<option value="'.$row["SetID"].'">'.$row["SetDescription"].'</option>';
+                        }
+                    } else {
+                        //Fallback, if database throughts an error
+                        echo '<option value="0">Random songs from all categories</option>';
+                    }
+                    $conn->close();
+                    ?>
+                </select>
 
-        <label for="youtubeID" class="form-label">Youtube-ID / Video link</label>
-        <input type="text" class="form-control" name="youtubeID" id="youtubeID" placeholder="dQw4w9WgXcQ"><br>
+                <br>
 
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="hunter2"><br>
+                <label for="youtubeID" class="form-label">Youtube-ID / Video link</label>
+                <input type="text" class="form-control" name="youtubeID" id="youtubeID" placeholder="dQw4w9WgXcQ"><br>
 
-        <button type="submit" class="btn btn-primary mb-3">Add to gameset</button>
-    </form>
-</main>
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="hunter2"><br>
+
+                <button type="submit" class="btn btn-primary mb-3">Add to gameset</button>
+            </form>
+        </main>
+    </body>
+</html>
