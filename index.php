@@ -54,7 +54,7 @@
         <label for="setId">Set</label>
         <select id="setId" name="set" class="form-control">
           <?php
-            $sql = "SELECT * FROM sets";
+            $sql = "SELECT * FROM sets ORDER BY SetID";
             $result = $conn->query($sql);
             
             if ($result->num_rows > 0) {

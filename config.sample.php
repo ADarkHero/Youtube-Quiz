@@ -11,3 +11,4 @@
       die("Connection failed: " . $conn->connect_error);
     }
     
+    $addToDBPass = "hunter2";
