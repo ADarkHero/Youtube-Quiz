@@ -1,3 +1,6 @@
+<?php
+  require_once 'config.php';
+?>
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
@@ -6,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Spotify Song Guessing Game</title>
+    <title>YouTube Song Guessing Game</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
@@ -48,8 +51,24 @@
     <h1>Create a new game:</h1>
     <form action="game.php" method="get">
       <div class="mb-3">
-        <label for="spotifyLink" class="form-label">Spotify playlist link</label>
-        <input type="text" class="form-control" id="spotifyLink" name="set" placeholder="https://open.spotify.com/playlist/3PxuZFikwSYIhX0bDMwWrQ?si=1a4c1ba439e1422a">
+        <label for="setId">Set</label>
+        <select id="setId" name="set" class="form-control">
+          <?php
+            $sql = "SELECT * FROM sets";
+            $result = $conn->query($sql);
+            
+            if ($result->num_rows > 0) {
+              // output data of each row
+              while($row = $result->fetch_assoc()) {
+                echo '<option value="'.$row["SetID"].'">'.$row["SetDescription"].'</option>';
+              }
+            } else {
+              //Fallback, if database throughts an error
+              echo '<option value="0">Random songs from all categories</option>';
+            }
+            $conn->close();
+          ?>
+        </select>
       </div>
       <div class="mb-3">
         <label for="numberOfPlayers" class="form-label">Number of players</label>

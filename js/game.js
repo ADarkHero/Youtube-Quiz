@@ -8,7 +8,7 @@ function startNewGame(){
     var gameSet = urlParams.get('set');
 
     if(gameSet == null || gameSet == ""){
-        gameSet = "asdf";
+        gameSet = "0";
     }
 
     //Load set
@@ -21,10 +21,15 @@ function startNewGame(){
 * Loads the set by id
 */
 function loadGameSet(gameSet){
-    //TODO: Load from playlist
-    songs.push("C5i-UnuUKUI", "wK-8TCDrbV8");
+    $.ajax({url: "loadGameSet.php?gameSet="+gameSet, success: function(result){
+        json = jQuery.parseJSON(result);
+        json.forEach(element => {
+            songs.push(element);
+        });
 
-    nextSong();
+        //Play first song
+        nextSong();
+    }});  
 }
 
 
