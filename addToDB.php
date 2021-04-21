@@ -1,44 +1,45 @@
-<?php
-  if(isset($_POST["youtubeID"])){
-    if($_POST["password"] == $addToDBPass){
-        require_once 'config.php';
 
-        $youtubeID = $_POST["youtubeID"];
-
-        //Remove everything before =
-        if(strpos($youtubeID, "=")){
-            $youtubeID = strstr($youtubeID, '=');
-            $youtubeID = substr($youtubeID, 1);
-        }
-        
-        //Remove everything after ?
-        if(strpos($youtubeID, "?")){
-            $youtubeID = substr($youtubeID, 0, strpos($youtubeID, "?"));
-        }
-        
-        //Insert into db
-        $sql = "INSERT INTO songs (SongLink, SetID) VALUES ('" . $youtubeID . "', '" . $_POST["set"] . "')";
-        
-        if ($conn->query($sql) === TRUE) {
-            echo "Added to database successfully!";
-        } else {
-            echo "ERROR: " . $sql . "<br>" . $conn->error;
-        }
-    }
-    else{
-        echo "ERROR: Wrong password!";
-    } 
-  }
-  else{
-    require_once 'config.php';
-  }
-?>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css\cover.css" rel="stylesheet">
 
 <html>
     <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="px-3">
+        <?php
+            require_once 'config.php';
+            if(isset($_POST["youtubeID"])){
+                if($_POST["password"] == $addToDBPass){
+                    
+
+                    $youtubeID = $_POST["youtubeID"];
+
+                    //Remove everything before =
+                    if(strpos($youtubeID, "=")){
+                        $youtubeID = strstr($youtubeID, '=');
+                        $youtubeID = substr($youtubeID, 1);
+                    }
+                    
+                    //Remove everything after ?
+                    if(strpos($youtubeID, "?")){
+                        $youtubeID = substr($youtubeID, 0, strpos($youtubeID, "?"));
+                    }
+                    
+                    //Insert into db
+                    $sql = "INSERT INTO songs (SongLink, SetID) VALUES ('" . $youtubeID . "', '" . $_POST["set"] . "')";
+                    
+                    if ($conn->query($sql) === TRUE) {
+                        echo "Added to database successfully!";
+                    } else {
+                        echo "ERROR: " . $sql . "<br>" . $conn->error;
+                    }
+                }
+                else{
+                    echo "ERROR: Wrong password!";
+                } 
+            }
+        ?>
+    </div>
         <main class="px-3">
             <h1>Add video to game set:</h1>
             <form action="addToDB.php" method="post">
