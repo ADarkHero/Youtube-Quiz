@@ -10,10 +10,10 @@
 
     //Gameset 0 plays songs from all sets
     if($gameSet == 0){
-        $sql = "SELECT * FROM songs";
+        $sql = "SELECT DISTINCT SongLink FROM songs";
     }
     else{
-        $sql = "SELECT * FROM songs WHERE SetID = " . $gameSet;
+        $sql = "SELECT DISTINCT SongLink FROM songs WHERE SetID = " . $gameSet;
     }
 
     

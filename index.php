@@ -64,7 +64,7 @@
   </main>
 
   <footer class="mt-auto text-white-50">
-    <p>Made by <a href="https://www.adarkhero.de" class="text-white">ADarkHero</a></p>
+    <p>Made by <a target="_blank" href="https://www.adarkhero.de" class="text-white">ADarkHero</a> | <a href="addToDB.php" class="text-white">Configuration</a></p>
   </footer>
 </div>
 
