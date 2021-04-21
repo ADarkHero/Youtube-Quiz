@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Spotify Song Guessing Game</title>
+    <title>YouTube Song Guessing Game</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
@@ -16,6 +16,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Core game js -->
     <script src="js/jquery-3.6.0.min.js"></script>
+    <link href="js/bootstrap.min.js" rel="stylesheet">
     <script src="js/game.js"></script>
     <script>
         window.onload = function () {
