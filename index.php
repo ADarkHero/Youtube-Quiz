@@ -37,13 +37,18 @@
         <label for="setId">Set</label>
         <select id="setId" name="set" class="form-control">
           <?php
-            $sql = "SELECT * FROM sets ORDER BY SetID";
+            $sql = "SELECT sets.SetID as SetNum, SetDescription, COUNT(SongID) as SongCount, (SELECT Count(SetID) from songs) as TotalCount " .
+            "FROM sets LEFT OUTER JOIN songs ON songs.SetID = sets.SetID " .
+            "GROUP BY sets.SetID ORDER BY sets.SetID";
             $result = $conn->query($sql);
             
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
-                echo '<option value="'.$row["SetID"].'">'.$row["SetDescription"].'</option>';
+                //ID 0 => Songs from all categories
+                ($row["SetNum"] == "0") ? $songCount = $row["TotalCount"]: $songCount = $row["SongCount"];
+
+                echo '<option value="'.$row["SetNum"].'">'.$row["SetDescription"].' ('.$songCount.' songs)'.'</option>';
               }
             } else {
               //Fallback, if database throughts an error
