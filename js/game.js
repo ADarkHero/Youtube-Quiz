@@ -20,7 +20,7 @@ function startNewGame(){
 /*
 * Loads the set by id
 */
-function loadGameSet(gameSet){
+function loadGameSet(gameSet, random){
     $.ajax({url: "loadGameSet.php?gameSet="+gameSet, success: function(result){
         json = jQuery.parseJSON(result);
         json.forEach(element => {
@@ -42,8 +42,17 @@ function nextSong(){
         //Hide song info
         unrevealSong();
 
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
         //Choose a song randomly
-        var randomSongNumber = Math.floor(Math.random() * songs.length);
+        if(urlParams.get('random')){
+            var randomSongNumber = Math.floor(Math.random() * songs.length);
+        }
+        //Don't choose randomly
+        else{
+            var randomSongNumber = 0;
+        }
+        
 
         //Load song from Spotify
         loadSong(songs[randomSongNumber]);

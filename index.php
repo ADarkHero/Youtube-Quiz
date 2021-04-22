@@ -46,7 +46,7 @@
               // output data of each row
               while($row = $result->fetch_assoc()) {
                 //ID 0 => Songs from all categories
-                ($row["SetNum"] == "0") ? $songCount = $row["TotalCount"]: $songCount = $row["SongCount"];
+                ($row["SetNum"] == "0") ? $songCount = $row["TotalCount"] : $songCount = $row["SongCount"];
 
                 echo '<option value="'.$row["SetNum"].'">'.$row["SetDescription"].' ('.$songCount.' songs)'.'</option>';
               }
@@ -61,6 +61,10 @@
       <div class="mb-3">
         <label for="numberOfPlayers" class="form-label">Number of players</label>
         <input type="number" class="form-control" name="players" id="numberOfPlayers" placeholder="3">
+      </div>
+      <div class="mb-3">
+        <input type="checkbox" class="form-check-input" id="randomCheckBox" name="random" checked>
+        <label class="form-check-label" for="randomCheckBox">Randomize song order</label>
       </div>
       <div class="mb-3">
         <button type="submit" class="btn btn-primary mb-3">Start game</button>

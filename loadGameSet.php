@@ -10,12 +10,12 @@
 
     //Gameset 0 plays songs from all sets
     if($gameSet == 0){
-        $sql = "SELECT DISTINCT SongLink FROM songs ORDER BY RAND()";
+        $sql = "SELECT DISTINCT SongLink FROM songs";
     }
     else{
-        $sql = "SELECT DISTINCT SongLink FROM songs WHERE SetID = " . $gameSet . " ORDER BY RAND()";
+        $sql = "SELECT DISTINCT SongLink FROM songs WHERE SetID = " . $gameSet;
     }
-
+    
     
     $result = $conn->query($sql);
     
