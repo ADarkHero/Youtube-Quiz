@@ -21,7 +21,7 @@
                                 if ($result->num_rows > 0) {
                                     // output data of each row
                                     while($row = $result->fetch_assoc()) {
-                                    echo '<option value="'.$row["SetID"].'">'.$row["SetDescription"].'</option>';
+                                        echo '<option value="'.$row["SetID"].'">'.$row["SetDescription"].'</option>';
                                     }
                                 } else {
                                     //Fallback, if database throughts an error

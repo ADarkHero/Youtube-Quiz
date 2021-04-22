@@ -2,11 +2,15 @@ var songs = [];
 
 
 
+/*
+* Let's begin a new game!
+*/
 function startNewGame(){
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
     var gameSet = urlParams.get('set');
 
+    //Default set => 0 (choose from all songs in the database)
     if(gameSet == null || gameSet == ""){
         gameSet = "0";
     }
@@ -45,21 +49,20 @@ function nextSong(){
         (urlParams.has('modMode')) ? revealSong() : unrevealSong();
 
         //Choose a song randomly
-        if(urlParams.get('random')){
-            var randomSongNumber = Math.floor(Math.random() * songs.length);
+        if(urlParams.has('random')){
+            var songNumber = Math.floor(Math.random() * songs.length);
         }
         //Don't choose randomly
         else{
-            var randomSongNumber = 0;
+            var songNumber = 0;
         }
         
         //If it's the first song and the autoplay checkbox was not set: Don't autoplay first song
         //Autoplay all other songs
-        (!urlParams.has('autoplay') && $("#songsPlayed").text() == 0) ? loadSong(songs[randomSongNumber], false) : loadSong(songs[randomSongNumber], true);
+        (!urlParams.has('autoplay') && $("#songsPlayed").text() == 0) ? loadSong(songs[songNumber], false) : loadSong(songs[songNumber], true);
         
-
         //Remove song from array
-        songs.splice(randomSongNumber, 1);
+        songs.splice(songNumber, 1);
 
         //Add 1 to the song counter
         $("#songsPlayed").text(parseInt($("#songsPlayed").text())+1)

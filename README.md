@@ -6,6 +6,12 @@
 * Play the videos in each set in order or at random
 * Moderator mode (if the players should not see the screen)
 
+## Setup on your webserver
+* Download source code
+* Import sql dump into your database
+* Rename *config.sample.php* to *config.php*
+* Add your database connection and passwords to *config.php*
+
 
 ## Game menu while guessing
 ![Youtube-Quiz](https://i.imgur.com/5UUJ68P.jpeg)

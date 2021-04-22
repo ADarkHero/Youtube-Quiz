@@ -21,7 +21,7 @@ body{
 }
 
 .showInnerSong{
-  position :absolute;
+  position: absolute;
   top: -265px;
   left: 50%;
   transform: translateX(-50%);

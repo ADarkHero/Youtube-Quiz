@@ -26,7 +26,7 @@
             array_push($songs, $row["SongLink"]);
         }
     } else {
-        //Fallback, if database throughts an error
+        //Fallback, if database throws an error
         array_push($songs, 'dQw4w9WgXcQ');
     }
     $conn->close();
