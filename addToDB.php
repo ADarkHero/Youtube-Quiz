@@ -59,9 +59,9 @@
                                 $youtubeID = substr($youtubeID, 1);
                             }
                             
-                            //Remove everything after ?
-                            if(strpos($youtubeID, "?")){
-                                $youtubeID = substr($youtubeID, 0, strpos($youtubeID, "?"));
+                            //Remove everything after &
+                            if(strpos($youtubeID, "&")){
+                                $youtubeID = substr($youtubeID, 0, strpos($youtubeID, "&"));
                             }
                             
                             //Insert into db
