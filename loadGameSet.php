@@ -10,10 +10,10 @@
 
     //Gameset 0 plays songs from all sets
     if($gameSet == 0){
-        $sql = "SELECT DISTINCT SongLink FROM songs";
+        $sql = "SELECT DISTINCT SongLink FROM songs ORDER BY RAND()";
     }
     else{
-        $sql = "SELECT DISTINCT SongLink FROM songs WHERE SetID = " . $gameSet;
+        $sql = "SELECT DISTINCT SongLink FROM songs WHERE SetID = " . $gameSet . " ORDER BY RAND()";
     }
 
     
@@ -27,7 +27,7 @@
         }
     } else {
         //Fallback, if database throughts an error
-        array_push($songs, 'dQw4w9WgXcQ');;
+        array_push($songs, 'dQw4w9WgXcQ');
     }
     $conn->close();
 
