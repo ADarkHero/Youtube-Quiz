@@ -64,13 +64,19 @@
       <div class="form-group row mb-3">
         <label for="numberOfPlayers" class="col-sm-4 col-form-label">Number of players</label>
         <div class="col-sm-8">
-          <input type="number" class="form-control" name="players" id="numberOfPlayers" placeholder="3">
+          <input type="number" class="form-control" name="players" id="numberOfPlayers" value="3">
         </div>
       </div>
       <div class="form-group row mb-3">
         <label class="col-sm-4 col-form-label custom-control-label" for="randomCheckBox">Randomize song order</label>
         <div class="col-sm-8 form-check form-switch">
           <input type="checkbox" class="form-check-input" id="randomCheckBox" name="random" checked>
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label class="col-sm-4 col-form-label custom-control-label" for="autoplayFirstCheckBox">Autoplay first song</label>
+        <div class="col-sm-8 form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="autoplayFirstCheckBox" name="autoplay">
         </div>
       </div>
       <div class="form-group row mb-3">

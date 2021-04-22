@@ -53,9 +53,10 @@ function nextSong(){
             var randomSongNumber = 0;
         }
         
-
-        //Load song from Spotify
-        loadSong(songs[randomSongNumber]);
+        //If it's the first song and the autoplay checkbox was not set: Don't autoplay first song
+        //Autoplay all other songs
+        (!urlParams.has('autoplay') && $("#songsPlayed").text() == 0) ? loadSong(songs[randomSongNumber], false) : loadSong(songs[randomSongNumber], true);
+        
 
         //Remove song from array
         songs.splice(randomSongNumber, 1);
@@ -69,8 +70,14 @@ function nextSong(){
 }
 
 
-function loadSong(songId){
-    $("#youtubeSrc").attr("src", "https://www.youtube.com/embed/" + songId + "?rel=0&autoplay=1");
+
+/*
+* Loads a new video
+*/
+function loadSong(songId, autoplay){
+    var url = "https://www.youtube.com/embed/" + songId + "?rel=0";
+    if(autoplay){ url += "&autoplay=1"; }
+    $("#youtubeSrc").attr("src", url);
 }
 
 
