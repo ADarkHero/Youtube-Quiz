@@ -74,6 +74,12 @@
         </div>
       </div>
       <div class="form-group row mb-3">
+        <label class="col-sm-4 col-form-label custom-control-label" for="modModeCheckBox">Moderator mode (always reveal song)</label>
+        <div class="col-sm-8 form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="modModeCheckBox" name="modMode">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
         <button type="submit" class="btn btn-lg btn-primary">Start game</button>
       </div>
     </form>

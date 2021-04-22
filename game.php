@@ -35,7 +35,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-5 d-grid gap-2">
-          <button class="btn btn-primary" type="button" id="revealSong" onclick="revealSong()">Reveal song</button>
+          <button class="btn btn-primary" type="button" id="revealSong" onclick="switchRevealSong()">Reveal song</button>
         </div>
         <div class="col-sm-5 d-grid gap-2">
           <button class="btn btn-info" type="button" id="nextSong" onclick="nextSong()">Next song</button>

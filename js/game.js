@@ -38,12 +38,12 @@ function loadGameSet(gameSet, random){
 * Plays next song
 */
 function nextSong(){
-    if(songs.length > 0){
-        //Hide song info
-        unrevealSong();
-
+    if(songs.length > 0){  
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
+        //Hide song info or show them on modmode
+        (urlParams.has('modMode')) ? revealSong() : unrevealSong();
+
         //Choose a song randomly
         if(urlParams.get('random')){
             var randomSongNumber = Math.floor(Math.random() * songs.length);
@@ -96,7 +96,16 @@ function changeScore(playerId, identifier) {
 
 
 /*
-* Reveals song title and name
+* Switches between reveal and unreveal
+*/
+function switchRevealSong(){
+    ($( "#outerSong" ).hasClass( "showOuterSong" )) ? revealSong() : unrevealSong();
+}
+
+
+
+/*
+* Reveals song video
 */
 function revealSong(){
     if($( "#outerSong" ).hasClass( "showOuterSong" )){
@@ -107,15 +116,12 @@ function revealSong(){
 
         $("#revealSong").html('Unreveal song');
     }
-    else{
-        unrevealSong();
-    }
 }
 
 
 
 /*
-* Hides song info again
+* Hides song video again
 */
 function unrevealSong(){
     if(!$( "#outerSong" ).hasClass( "showOuterSong" )){
