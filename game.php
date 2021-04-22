@@ -58,7 +58,7 @@
           <button class="btn btn-info" type="button" id="nextSong" onclick="nextSong()">Next song</button>
         </div>
         <div class="col-sm-1 d-grid gap-2">
-          <!-- Placeholder -->
+          <button class="btn btn-danger" type="button" id="quitGame" onclick="quitGame()">X</button>
         </div>
         <div class="col-sm-1 d-grid gap-2">
           <button class="btn btn-success" type="button" id="songsPlayed">0</button>

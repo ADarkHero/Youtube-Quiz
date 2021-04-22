@@ -118,3 +118,14 @@ function unrevealSong(){
         $("#revealSong").html('Reveal song');
     }
 }
+
+
+
+/*
+* Shows popup to quit game
+*/
+function quitGame(){
+    if (confirm('Quit game?')) {
+        window.location.replace("index.php");
+    }
+}
