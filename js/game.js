@@ -50,6 +50,9 @@ function nextSong(){
 
         //Remove song from array
         songs.splice(randomSongNumber, 1);
+
+        //Add 1 to the song counter
+        $("#songsPlayed").text(parseInt($("#songsPlayed").text())+1)
     }   
     else{
         alert("All songs were already played. Please reload the page to play again!");

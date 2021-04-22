@@ -51,11 +51,17 @@
   <header class="mb-auto">
     <div class="container">
       <div class="row">
-        <div class="col-sm d-grid gap-2">
+        <div class="col-sm-5 d-grid gap-2">
           <button class="btn btn-primary" type="button" id="revealSong" onclick="revealSong()">Reveal song</button>
         </div>
-        <div class="col-sm d-grid gap-2">
-          <button class="btn btn-secondary" type="button" id="nextSong" onclick="nextSong()">Next song</button>
+        <div class="col-sm-5 d-grid gap-2">
+          <button class="btn btn-info" type="button" id="nextSong" onclick="nextSong()">Next song</button>
+        </div>
+        <div class="col-sm-1 d-grid gap-2">
+          <!-- Placeholder -->
+        </div>
+        <div class="col-sm-1 d-grid gap-2">
+          <button class="btn btn-success" type="button" id="songsPlayed">0</button>
         </div>
       </div>
     </div>
