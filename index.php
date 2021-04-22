@@ -20,6 +20,7 @@
     
     <!-- Custom styles for this template -->
     <link href="css\cover.css" rel="stylesheet">
+    <link href="css\game.css" rel="stylesheet">
   </head>
   <body class="d-flex h-100 text-center text-white bg-dark">
     
@@ -30,44 +31,50 @@
     </div>
   </header>
 
-  <main class="px-3">
-    <h1>Create a new game:</h1>
+  <main>
+    <h1 class="mb-3">Create a new game:</h1>
     <form action="game.php" method="get">
-      <div class="mb-3">
-        <label for="setId">Set</label>
-        <select id="setId" name="set" class="form-control">
-          <?php
-            $sql = "SELECT sets.SetID as SetNum, SetDescription, COUNT(SongID) as SongCount, (SELECT Count(SetID) from songs) as TotalCount " .
-            "FROM sets LEFT OUTER JOIN songs ON songs.SetID = sets.SetID " .
-            "GROUP BY sets.SetID ORDER BY sets.SetID";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-              // output data of each row
-              while($row = $result->fetch_assoc()) {
-                //ID 0 => Songs from all categories
-                ($row["SetNum"] == "0") ? $songCount = $row["TotalCount"] : $songCount = $row["SongCount"];
+      <div class="form-group row mb-3">
+        <label for="setId" class="col-sm-4 col-form-label">Set</label>
+        <div class="col-sm-8">
+          <select id="setId" name="set" class="form-control">
+            <?php
+              $sql = "SELECT sets.SetID as SetNum, SetDescription, COUNT(SongID) as SongCount, (SELECT Count(SetID) from songs) as TotalCount " .
+              "FROM sets LEFT OUTER JOIN songs ON songs.SetID = sets.SetID " .
+              "GROUP BY sets.SetID ORDER BY sets.SetID";
+              $result = $conn->query($sql);
+              
+              if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                  //ID 0 => Songs from all categories
+                  ($row["SetNum"] == "0") ? $songCount = $row["TotalCount"] : $songCount = $row["SongCount"];
 
-                echo '<option value="'.$row["SetNum"].'">'.$row["SetDescription"].' ('.$songCount.' songs)'.'</option>';
+                  echo '<option value="'.$row["SetNum"].'">'.$row["SetDescription"].' ('.$songCount.' songs)'.'</option>';
+                }
+              } else {
+                //Fallback, if database throughts an error
+                echo '<option value="0">Random songs from all categories</option>';
               }
-            } else {
-              //Fallback, if database throughts an error
-              echo '<option value="0">Random songs from all categories</option>';
-            }
-            $conn->close();
-          ?>
-        </select>
+              $conn->close();
+            ?>
+          </select>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="numberOfPlayers" class="form-label">Number of players</label>
-        <input type="number" class="form-control" name="players" id="numberOfPlayers" placeholder="3">
+      <div class="form-group row mb-3">
+        <label for="numberOfPlayers" class="col-sm-4 col-form-label">Number of players</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" name="players" id="numberOfPlayers" placeholder="3">
+        </div>
       </div>
-      <div class="mb-3">
-        <input type="checkbox" class="form-check-input" id="randomCheckBox" name="random" checked>
-        <label class="form-check-label" for="randomCheckBox">Randomize song order</label>
+      <div class="form-group row mb-3">
+        <label class="col-sm-4 col-form-label custom-control-label" for="randomCheckBox">Randomize song order</label>
+        <div class="col-sm-8 form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="randomCheckBox" name="random" checked>
+        </div>
       </div>
-      <div class="mb-3">
-        <button type="submit" class="btn btn-primary mb-3">Start game</button>
+      <div class="form-group row mb-3">
+        <button type="submit" class="btn btn-lg btn-primary">Start game</button>
       </div>
     </form>
   </main>
@@ -76,7 +83,6 @@
     <p>Made by <a target="_blank" href="https://www.adarkhero.de" class="text-white">ADarkHero</a> | <a href="addToDB.php" class="text-white">Configuration</a></p>
   </footer>
 </div>
-
 
     
   </body>
