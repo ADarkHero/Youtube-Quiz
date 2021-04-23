@@ -196,7 +196,7 @@ function streamerMode(gameSet){
     }
     //Receive message
     if(urlParams.has('admin')){
-        var url = 'game.php?streamerMode=true&set=' + gameSet;
+        var url = 'game.php?streamerMode=true&players=' + urlParams.get('players') + 'set=' + gameSet;
         if(urlParams.has('autoplay')){ url += "&autoplay=true"; }
         window.open(url, '_blank').focus(); 
     }
