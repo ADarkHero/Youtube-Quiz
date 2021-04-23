@@ -5,6 +5,7 @@
 * Database with different songlists
 * Play the videos in each set in order or at random
 * Moderator mode (if the players should not see the screen)
+* Streamer mode (with front and backend)
 
 ## Setup on your webserver
 * Download source code
